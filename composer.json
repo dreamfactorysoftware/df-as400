@@ -1,0 +1,50 @@
+{
+  "name":        "dreamfactory/df-as400",
+  "description": "DreamFactory(tm) As400 Code",
+  "homepage":    "https://www.dreamfactory.com/",
+  "keywords":    [
+    "dreamfactory",
+    "As400",
+    "connector"
+  ],
+  "license":     [
+    "Apache-2.0"
+  ],
+  "authors":     [
+    {
+      "name":  "DreamFactory Developers",
+      "email": "code@dreamfactory.com"
+    }
+  ],
+  "support":     {
+    "email":  "dspsupport@dreamfactory.com",
+    "source": "https://github.com/dreamfactorysoftware/df-as400",
+    "issues": "https://github.com/dreamfactorysoftware/df-as400/issues",
+    "wiki":   "https://wiki.dreamfactory.com"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require":     {
+    "dreamfactory/df-core":   "~0.25",
+    "dreamfactory/df-system": "~0.5",
+    "dreamfactory/df-sqldb": "~0.17"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "autoload":    {
+    "psr-4": {
+      "DreamFactory\\Core\\As400\\": "src/"
+    }
+  },
+  "extra":       {
+    "branch-alias": {
+      "dev-develop": "0.1.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "DreamFactory\\Core\\As400\\ServiceProvider"
+      ]
+    }
+  }
+}
