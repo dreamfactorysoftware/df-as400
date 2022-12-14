@@ -1,4 +1,6 @@
-<?php namespace DreamFactory\Core\As400\Services;
+<?php 
+
+namespace DreamFactory\Core\As400\Services;
 
 use DreamFactory\Core\SqlDb\Resources\StoredFunction;
 use DreamFactory\Core\SqlDb\Resources\StoredProcedure;
