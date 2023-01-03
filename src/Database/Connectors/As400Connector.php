@@ -30,37 +30,33 @@ class As400Connector extends Connector implements ConnectorInterface
      */
     protected function getDsn(array $config)
     {
-        extract($config, EXTR_SKIP);
+        $dsnParts = [
+            'odbc:DRIVER=%s',
+            'System=%s',
+            'Database=%s',
+            'UserID=%s',
+            'Password=%s',
+        ];
 
-        $dsn = "ibm:";
+        $dsnConfig = [
+            $config['driverName'],
+            $config['host'],
+            $config['database'],
+            $config['username'],
+            $config['password'],
+        ];
 
-        if (empty($driverName)) {
-            $driverName = "{IBM i Access ODBC DRIVER}";
-        }
-        $dsn .= "DRIVER={$driverName};";
-        if (!empty($host)) {
-            $dsn .= "HOSTNAME={$host};";
-        }
-        if (!empty($port)) {
-            $dsn .= "PORT={$port};";
-        }
-        if (!empty($protocol)) {
-            $dsn .= "PROTOCOL={$protocol};";
-        }
-        if (!empty($database)) {
-            $dsn .= "DATABASE={$database};";
-        }
-        if (!empty($system)) {
-            $dsn .= "SYSTEM={$system};";
-        }
-        if (!empty($uid)) {
-            $dsn .= "UID={$uid};";
-        }
-        if (!empty($pwd)) {
-            $dsn .= "PWD={$pwd};";
+        if (array_key_exists('odbc_keywords', $config)) {
+            $odbcKeywords = $config['odbc_keywords'];
+            $parts = array_map(function($part) {
+                return $part . '=%s';
+            }, array_keys($odbcKeywords));
+            $config = array_values($odbcKeywords);
+
+            $dsnParts = array_merge($dsnParts, $parts);
+            $dsnConfig = array_merge($dsnConfig, $config);
         }
 
-
-        return $dsn;
+        return sprintf(implode(';', $dsnParts), ...$dsnConfig);
     }
 }
