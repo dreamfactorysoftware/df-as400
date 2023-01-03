@@ -732,7 +732,7 @@ FROM qsys2.syscst tc
 INNER JOIN qsys2.syskeycst kcu ON kcu.constraint_name = tc.constraint_name
 INNER JOIN qsys2.sysrefcst rc ON tc.constraint_schema = rc.constraint_schema AND tc.constraint_name = rc.constraint_name
 INNER JOIN qsys2.syskeycst kcu2 ON rc.unique_constraint_schema = kcu2.constraint_schema AND rc.unique_constraint_name = kcu2.constraint_name
-WHERE tc.table_schema IN ('{$schema}');
+WHERE tc.table_schema IN ('{$schema}')
 MYSQL;
                 break;
             case static::DB2_LUW:
@@ -779,7 +779,7 @@ rel.REFTBCREATOR AS referenced_table_schema, rel.REFTBNAME as referenced_table_n
 rel.DELETERULE as delete_rule
 FROM SYSIBM.SYSRELS rel
 INNER JOIN SYSIBM.SYSFOREIGNKEYS fk ON fk.RELNAME = rel.RELNAME
-WHERE tc.TBCREATOR IN ('{$schema}');
+WHERE tc.TBCREATOR IN ('{$schema}')
 MYSQL;
                 break;
 //            case static::DB2_ODBC:
