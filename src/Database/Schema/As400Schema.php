@@ -1,6 +1,6 @@
 <?php
 
-namespace DreamFactory\Core\IbmDb2\Database\Schema;
+namespace DreamFactory\Core\As400\Database\Schema;
 
 use DreamFactory\Core\Database\Schema\ColumnSchema;
 use DreamFactory\Core\Database\Schema\FunctionSchema;
