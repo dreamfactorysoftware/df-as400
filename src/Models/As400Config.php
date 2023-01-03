@@ -7,7 +7,7 @@ use DreamFactory\Core\SqlDb\Models\SqlDbConfig;
 /**
  * As400 config
  */
-class As400Config extends BaseServiceConfigModel
+class As400Config extends SqlDbConfig
 {
     public static function getDriverName()
     {
