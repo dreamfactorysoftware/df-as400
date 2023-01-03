@@ -408,20 +408,20 @@ MYSQL;
         switch ($this->getDB2Series()) {
             case static::DB2_ISERIES:
 //            $sql = <<<MYSQL
-//SELECT DISTINCT TABLE_SCHEMA FROM QSYS2.SYSTABLES WHERE SYSTEM_TABLE = 'N' ORDER BY TABLE_SCHEMA;
+//SELECT DISTINCT TABLE_SCHEMA FROM QSYS2.SYSTABLES WHERE SYSTEM_TABLE = 'N' ORDER BY TABLE_SCHEMA
 //MYSQL;
                 $sql = <<<MYSQL
-SELECT SCHEMA_NAME FROM QSYS2.SYSSCHEMAS ORDER BY SCHEMA_NAME;
+SELECT SCHEMA_NAME FROM QSYS2.SYSSCHEMAS ORDER BY SCHEMA_NAME
 MYSQL;
                 break;
             case static::DB2_LUW:
                 $sql = <<<MYSQL
-SELECT SCHEMANAME FROM SYSCAT.SCHEMATA WHERE DEFINERTYPE != 'S' ORDER BY SCHEMANAME;
+SELECT SCHEMANAME FROM SYSCAT.SCHEMATA WHERE DEFINERTYPE != 'S' ORDER BY SCHEMANAME
 MYSQL;
                 break;
             case static::DB2_ZOS:
                 $sql = <<<MYSQL
-SELECT DISTINCT CREATOR FROM SYSIBM.SYSTABLES WHERE CREATOR NOT LIKE 'SYS%' ORDER BY CREATOR;
+SELECT DISTINCT CREATOR FROM SYSIBM.SYSTABLES WHERE CREATOR NOT LIKE 'SYS%' ORDER BY CREATOR
 MYSQL;
                 // todo need to query SYSROUTINES as well
                 break;
@@ -482,7 +482,7 @@ MYSQL;
 //                break;
         }
         $sql .= <<<MYSQL
-  ORDER BY TABNAME;
+  ORDER BY TABNAME
 MYSQL;
 
         $params = (!empty($schema)) ? [':schema' => $schema] : [];
@@ -550,7 +550,7 @@ MYSQL;
 //                break;
         }
         $sql .= <<<MYSQL
-  ORDER BY TABNAME;
+  ORDER BY TABNAME
 MYSQL;
 
         $params = (!empty($schema)) ? [':schema' => $schema] : [];
