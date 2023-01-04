@@ -31,19 +31,21 @@ class As400Connector extends Connector implements ConnectorInterface
     protected function getDsn(array $config)
     {
         $dsnParts = [
-            'odbc:DRIVER=%s',
-            'System=%s',
-            'Database=%s',
-            'UserID=%s',
-            'Password=%s',
+            'odbc:DRIVER={IBM i ACCESS ODBC Driver}',
+            'SYSTEM=%s',
+            'DATABASE=%s',
+            'UID=%s',
+            'PWD=%s',
+            'NAM=0',
+            'DBQ=%s'
         ];
 
         $dsnConfig = [
-            $config['driverName'],
             $config['host'],
             $config['database'],
             $config['username'],
             $config['password'],
+            $config['username'],
         ];
 
         if (array_key_exists('odbc_keywords', $config)) {
